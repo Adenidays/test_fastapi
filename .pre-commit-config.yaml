@@ -1,0 +1,41 @@
+fail_fast: true
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=700"]
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-symlinks
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.10
+    hooks:
+      - id: ruff
+        args:
+          - --fix
+      - id: ruff-format
+      - id: ruff
+        args:
+          - --fix
+        stages:
+          - manual
+      - id: ruff-format
+        args:
+          - --check
+        stages:
+          - manual
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.15.0
+    hooks:
+      - id: mypy
+        pass_filenames: false
+        args:
+          - --install-types
+          - --non-interactive
+          - --check-untyped-defs
+          - --python-version=3.12
