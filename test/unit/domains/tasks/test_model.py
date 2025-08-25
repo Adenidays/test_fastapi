@@ -25,9 +25,7 @@ def test_tasks_dataclass_fields_types():
     assert isinstance(t.created_at, datetime)
 
 
-@pytest.mark.skip(
-    reason="model.created_at сейчас не default_factory — фиксируй при желании"
-)
+@pytest.mark.skip(reason="")
 def test_created_at_should_be_dynamic():
     import uuid as _uuid
 
